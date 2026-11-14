@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duck Sim Reborn VALUE</title>
+<style>
+:root{--bg:#090e1b;--panel:#121b2d;--panel2:#1a2740;--text:#f4f7ff;--muted:#9eacc5;--gold:#ffd34e;--line:#293752;--green:#55d69e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,#1b3150 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}
+header{padding:26px 6vw 22px;border-bottom:1px solid var(--line);background:#0b1322dd}
+.top{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.duck{font-size:38px}.brand h1{margin:0;font-size:clamp(21px,4vw,30px);letter-spacing:1px}.brand span{color:var(--gold)}
+.tag{border:1px solid #806b2b;color:var(--gold);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:1px}
+main{max-width:1100px;margin:34px auto;padding:0 22px}
+.hero{margin-bottom:25px}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:2px}.hero h2{font-size:clamp(28px,5vw,44px);margin:8px 0}.hero p{color:var(--muted);margin:0}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}.search{flex:1;min-width:220px;background:var(--panel);border:1px solid var(--line);color:var(--text);padding:14px 16px;border-radius:12px;font-size:15px;outline:none}.search:focus,input:focus{border-color:var(--gold)}
+button{cursor:pointer;border:0;border-radius:10px;padding:11px 15px;font-weight:800;background:var(--gold);color:#17130a}button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}button.danger{background:#4a2530;color:#ffdce2}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:30px 0 14px;gap:12px}.section-title h3{margin:0;font-size:19px}.count{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:15px}
+.card{background:linear-gradient(145deg,var(--panel),#101827);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 10px 30px #0002}.pet-image{width:100%;height:190px;object-fit:contain;background:#080d18;border:1px solid var(--line);border-radius:12px;margin-bottom:14px}.image-placeholder{height:190px;display:flex;align-items:center;justify-content:center;background:#080d18;border:1px dashed var(--line);border-radius:12px;margin-bottom:14px;color:var(--muted);font-size:13px}
+.pet-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.pet-head h4{margin:0;font-size:16px;line-height:1.35}.huge{font-size:10px;color:#17130a;background:var(--gold);padding:5px 8px;border-radius:6px;font-weight:900}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:17px}.value{background:#0b1322;border:1px solid var(--line);border-radius:10px;padding:10px 8px;min-width:0}.value small{display:block;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.8px;margin-bottom:6px}.value strong{font-size:14px;overflow-wrap:anywhere}.rainbow strong{background:linear-gradient(90deg,#ff6b6b,#ffcf5a,#63d99b,#65a8ff,#c28aff);color:transparent;background-clip:text}
+.card-actions{display:flex;gap:8px;margin-top:14px}.card-actions button{flex:1;font-size:12px;padding:9px}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px;color:var(--muted);line-height:1.6}.note strong{color:var(--text)}
+.admin{margin-top:30px;background:#101827;border:1px solid var(--line);border-radius:16px;padding:18px}.admin h3{margin:0 0 5px}.admin p{color:var(--muted);font-size:13px;margin:0 0 15px}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.formgrid input{width:100%;padding:12px;border-radius:9px;background:var(--panel);border:1px solid var(--line);color:var(--text);outline:none}.formgrid button{grid-column:1/-1}
+.owner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}.owner strong{font-size:16px}.soon{color:var(--muted);font-size:13px}
+footer{text-align:center;padding:35px 20px;color:#73829d;font-size:12px}
+.empty{color:var(--muted);padding:22px;text-align:center;border:1px dashed var(--line);border-radius:12px;grid-column:1/-1}
+@media(max-width:520px){main{padding:0 15px}.values{gap:5px}.value{padding:9px 6px}.value strong{font-size:12px}}
+</style>
+</head>
+<body>
+<header><div class="top">
+  <div class="brand"><div class="duck">🦆</div><h1>DUCK SIM <span>REBORN</span> VALUE</h1></div>
+  <div class="tag">COMMUNITY VALUE LIST</div>
+</div></header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">YOUR VALUE LIST</div>
+    <h2>HUGE PET VALUES</h2>
+    <p>Values are set by the list owner. Search for a pet and compare its variants.</p>
+  </section>
+  <div class="toolbar">
+    <input id="search" class="search" type="search" placeholder="🔎  Search HUGE pets..." aria-label="Search pets">
+    <button class="secondary" id="reset">Reset list</button>
+  </div>
+  <div class="section-title"><h3>🦆 Huge Pets</h3><span class="count" id="count"></span></div>
+  <section class="grid" id="pets"></section>
+
+  <div class="section-title"><h3>📦 Special values</h3></div>
+  <section class="note owner">
+    <div><strong>Owner Bundle</strong><div class="soon">🇵🇱 Za dużo · 🇺🇸 Too much</div></div>
+    <span class="tag">NOT LISTED</span>
+  </section>
+  <div class="section-title"><h3>🛠️ Coming soon</h3></div>
+  <section class="note"><strong>Normal Pets</strong><br>Normal pet values will be added soon.</section>
+
+  <section class="admin">
+    <h3>✏️ Manage your values</h3>
+    <p>Add a HUGE pet. You can edit existing values with the Edit button on each card. Changes are saved in this browser.</p>
+    <form id="addForm" class="formgrid">
+      <input id="name" placeholder="Pet name (e.g. Huge Duck)" required>
+      <input id="normal" placeholder="Normal value (e.g. 500mln)">
+      <input id="gold" placeholder="Gold value (e.g. 600mln)">
+      <input id="rainbow" placeholder="Rainbow value (e.g. 800mln)">
+      <button type="submit">＋ Add HUGE pet</button>
+    </form>
+  </section>
+</main>
+<footer>DUCK SIM REBORN VALUE · Fan-made value list · Not affiliated with Roblox</footer>
+<script>
+const initialPets = [
+ {id:1,name:"Huge Rainbow Unicorn",normal:"500mln",gold:"N/A",rainbow:"N/A",image:"images/huge-rainbow-unicorn.jpg"},
+ {id:2,name:"Huge Super Corgi",normal:"250mln",gold:"N/A",rainbow:"N/A",image:"images/huge-super-corgi.jpg"},
+ {id:3,name:"Huge Soul Dragon",normal:"800mln",gold:"1b",rainbow:"1.2b",image:"images/huge-soul-dragon.jpg"},
+ {id:4,name:"Huge Soul Cat",normal:"500mln",gold:"600mln",rainbow:"800mln",image:""}
+];
+let pets;
+try { pets = JSON.parse(localStorage.getItem("duckSimValues")) || initialPets; } catch { pets = initialPets; }
+const el = id => document.getElementById(id);
+const defaultImages = {"Huge Rainbow Unicorn":"images/huge-rainbow-unicorn.jpg","Huge Super Corgi":"images/huge-super-corgi.jpg","Huge Soul Dragon":"images/huge-soul-dragon.jpg","Huge Soul Cat":""};
+pets.forEach(p=>{if(!p.image && defaultImages[p.name]) p.image=defaultImages[p.name];});
+function save(){localStorage.setItem("duckSimValues",JSON.stringify(pets));render();}
+function render(){
+ const q=el("search").value.toLowerCase();
+ const shown=pets.filter(p=>p.name.toLowerCase().includes(q));
+ el("count").textContent=`${shown.length} / ${pets.length} pets`;
+ el("pets").innerHTML=shown.length?shown.map(p=>`
+ <article class="card">
+  <div class="pet-head"><h4>${escapeHtml(p.name)}</h4><span class="huge">HUGE</span></div>
+  <div class="values">
+   <div class="value"><small>NORMAL</small><strong>${escapeHtml(p.normal||"N/A")}</strong></div>
+   <div class="value"><small>GOLD</small><strong>${escapeHtml(p.gold||"N/A")}</strong></div>
+   <div class="value rainbow"><small>🌈 RAINBOW</small><strong>${escapeHtml(p.rainbow||"N/A")}</strong></div>
+  </div>
+  <div class="card-actions"><button class="secondary" onclick="editPet(${p.id})">Edit values</button><button class="danger" onclick="deletePet(${p.id})">Delete</button></div>
+ </article>`).join(""):`<div class="empty">No pets found. Try another search.</div>`;
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function editPet(id){
+ const p=pets.find(x=>x.id===id); if(!p)return;
+ const name=prompt("Pet name:",p.name); if(name===null)return;
+ const normal=prompt("Normal value:",p.normal); if(normal===null)return;
+ const gold=prompt("Gold value:",p.gold); if(gold===null)return;
+ const rainbow=prompt("Rainbow value:",p.rainbow); if(rainbow===null)return;
+ Object.assign(p,{name:name.trim()||p.name,normal:normal.trim()||"N/A",gold:gold.trim()||"N/A",rainbow:rainbow.trim()||"N/A"});save();
+}
+function deletePet(id){if(confirm("Delete this pet from your value list?")){pets=pets.filter(p=>p.id!==id);save();}}
+el("search").addEventListener("input",render);
+el("addForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const name=el("name").value.trim(); if(!name)return;
+ pets.push({id:Date.now(),name,normal:el("normal").value.trim()||"N/A",gold:el("gold").value.trim()||"N/A",rainbow:el("rainbow").value.trim()||"N/A"});
+ e.target.reset();save();
+});
+el("reset").addEventListener("click",()=>{if(confirm("Restore the original four pets and values? This will remove your browser edits.")){pets=initialPets.map(p=>({...p}));save();}});
+render();
+</script>
+</body>
+</html>
